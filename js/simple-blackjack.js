@@ -37,62 +37,61 @@ $(function(){
     function deal() {
         resetGame();
 
-        // Store card ranks in an array
-        var cards = ["ace-of-clubs",
-            "two-of-clubs",
-            "three-of-clubs",
-            "four-of-clubs",
-            "five-of-clubs",
-            "six-of-clubs",
-            "seven-of-clubs",
-            "eight-of-clubs",
-            "nine-of-clubs",
-            "ten-of-clubs",
-            "jack-of-clubs",
-            "queen-of-clubs",
-            "king-of-clubs",
-            "ace-of-spades",
-            "two-of-spades",
-            "three-of-spades",
-            "four-of-spades",
-            "five-of-spades",
-            "six-of-spades",
-            "seven-of-spades",
-            "eight-of-spades",
-            "nine-of-spades",
-            "ten-of-spades",
-            "jack-of-spades",
-            "queen-of-spades",
-            "king-of-spades",
-            "ace-of-hearts",
-            "two-of-hearts",
-            "three-of-hearts",
-            "four-of-hearts",
-            "five-of-hearts",
-            "six-of-hearts",
-            "seven-of-hearts",
-            "eight-of-hearts",
-            "nine-of-hearts",
-            "ten-of-hearts",
-            "jack-of-hearts",
-            "queen-of-hearts",
-            "king-of-hearts",
-            "ace-of-diamonds",
-            "two-of-diamonds",
-            "three-of-diamonds",
-            "four-of-diamonds",
-            "five-of-diamonds",
-            "six-of-diamonds",
-            "seven-of-diamonds",
-            "eight-of-diamonds",
-            "nine-of-diamonds",
-            "ten-of-diamonds",
-            "jack-of-diamonds",
-            "queen-of-diamonds",
-            "king-of-diamonds"];
-
-        // Store correlating values in an array
-        var values = [11,2,3,4,5,6,7,8,9,10,10,10,10,11,2,3,4,5,6,7,8,9,10,10,10,10,11,2,3,4,5,6,7,8,9,10,10,10,10,11,2,3,4,5,6,7,8,9,10,10,10,10];
+        // Store card ranks and values
+        var cards = [
+            ["ace-of-clubs", 11],
+            ["two-of-clubs", 2],
+            ["three-of-clubs", 3],
+            ["four-of-clubs", 4],
+            ["six-of-clubs", 5],
+            ["six-of-clubs", 6],
+            ["seven-of-clubs", 7],
+            ["eight-of-clubs", 8],
+            ["nine-of-clubs", 9],
+            ["ten-of-clubs", 10],
+            ["jack-of-clubs", 10],
+            ["queen-of-clubs", 10],
+            ["king-of-clubs", 10],
+            ["ace-of-spades", 11],
+            ["two-of-spades", 2],
+            ["three-of-spades", 3],
+            ["four-of-spades", 4],
+            ["six-of-spades", 5],
+            ["six-of-spades", 6],
+            ["seven-of-spades", 7],
+            ["eight-of-spades", 8],
+            ["nine-of-spades", 9],
+            ["ten-of-spades", 10],
+            ["jack-of-spades", 10],
+            ["queen-of-spades", 10],
+            ["king-of-spades", 10],
+            ["ace-of-hearts", 11],
+            ["two-of-hearts", 2],
+            ["three-of-hearts", 3],
+            ["four-of-hearts", 4],
+            ["six-of-hearts", 5],
+            ["six-of-hearts", 6],
+            ["seven-of-hearts", 7],
+            ["eight-of-hearts", 8],
+            ["nine-of-hearts", 9],
+            ["ten-of-hearts", 10],
+            ["jack-of-hearts", 10],
+            ["queen-of-hearts", 10],
+            ["king-of-hearts", 10],
+            ["ace-of-diamonds", 11],
+            ["two-of-diamonds", 2],
+            ["three-of-diamonds", 3],
+            ["four-of-diamonds", 4],
+            ["six-of-diamonds", 5],
+            ["six-of-diamonds", 6],
+            ["seven-of-diamonds", 7],
+            ["eight-of-diamonds", 8],
+            ["nine-of-diamonds", 9],
+            ["ten-of-diamonds", 10],
+            ["jack-of-diamonds", 10],
+            ["queen-of-diamonds", 10],
+            ["king-of-diamonds", 10]
+        ];
 
         // Get the dealer's score
         var dealerTotal = 0;
@@ -100,15 +99,15 @@ $(function(){
             // Get a random number between 1 - 52
             var num = Math.floor(Math.random()*cards.length);
             // Get the card rank
-            var cardClass = cards[num];
+            var cardClass = cards[num][0];
 
             // Display the card on screen
             $(this).addClass(cardClass);
             // Store tha card's value
-            $(this).attr("data-value",values[num]);
+            $(this).attr("data-value", cards[num][1]);
 
             // Add to the dealer's current score
-            dealerTotal = parseInt(dealerTotal) + parseInt(values[num]);
+            dealerTotal = parseInt(dealerTotal) + parseInt(cards[num][1]);
 
             // If the dealer gets an Ace, determine whether it is worth 1 or 11
             if (dealerTotal > 21) {
@@ -124,7 +123,6 @@ $(function(){
             $("#dealerTotal").html(dealerTotal);
 
             cards.splice(num, 1);
-            values.splice(num, 1);
         });
 
         // Get the player's score
@@ -133,15 +131,15 @@ $(function(){
             // Get a random number between 1 - 52
             var num = Math.floor(Math.random()*cards.length);
             // Get the card rank
-            var cardClass = cards[num];
+            var cardClass = cards[num][0];
 
             // Display the card on screen
             $(this).addClass(cardClass);
             // Store tha card's value
-            $(this).attr("data-value",values[num]);
+            $(this).attr("data-value", cards[num][1]);
 
             // Add to the player's current score
-            playerTotal = parseInt(playerTotal) + parseInt(values[num]);
+            playerTotal = parseInt(playerTotal) + parseInt(cards[num][1]);
 
             // If the player gets an Ace, determine whether it is worth 1 or 11
             if (playerTotal > 21) {
@@ -157,7 +155,6 @@ $(function(){
             $("#playerTotal").html(playerTotal);
 
             cards.splice(num, 1);
-            values.splice(num, 1);
         });
 
         // If the player hits
@@ -165,14 +162,14 @@ $(function(){
             // Get a random number between 1 - 52
             var num = Math.floor(Math.random()*cards.length);
             // Get the card rank
-            var cardClass = cards[num];
+            var cardClass = cards[num][0];
 
             // Display the card on screen
-            var newCard = "<div class='card " +  cardClass + "' data-value='" + values[num] + "'></div>";
+            var newCard = "<div class='card " +  cardClass + "' data-value='" + cards[num][1] + "'></div>";
             $(".player-cards .new-cards").append(newCard);
 
             // Add to the player's current score
-            playerTotal = parseInt(playerTotal) + parseInt(values[num]);
+            playerTotal = parseInt(playerTotal) + parseInt(cards[num][1]);
 
             // If the player gets an Ace, determine whether it is worth 1 or 11
             if (playerTotal > 21) {
@@ -185,7 +182,7 @@ $(function(){
             }
 
             cards.splice(num, 1);
-            values.splice(num, 1);
+            //values.splice(num, 1);
 
             // Display the player's score
             $("#playerTotal").html(playerTotal);
@@ -284,20 +281,19 @@ $(function(){
                 // Get a random number between 1 - 52
                 var num = Math.floor(Math.random()*cards.length);
                 // Get the card rank
-                var cardClass = cards[num];
+                var cardClass = cards[num][0];
 
                 // Display the card on screen
-                var newCard = "<div class='card " +  cardClass + "' data-value='" + values[num] + "'></div>";
+                var newCard = "<div class='card " +  cardClass + "' data-value='" + cards[num][1] + "'></div>";
                 $(".dealer-cards .new-cards").append(newCard);
 
                 // Add to the dealer's current score
-                dealerTotal = parseInt(dealerTotal) + parseInt(values[num]);
+                dealerTotal = parseInt(dealerTotal) + parseInt(cards[num][1]);
 
                 $("#dealerTotal").html(dealerTotal);
                 $(".dealer-cards").width($(".dealer-cards").width() + 84);
 
                 cards.splice(num, 1);
-                values.splice(num, 1);
 
             }, 500);
         });
