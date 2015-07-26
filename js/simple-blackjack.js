@@ -7,6 +7,12 @@
 $(function(){
     deal();
 
+    // Reset funds and start a new game
+    $("#new-game").click(function(){
+        $("#money").html(500);
+        deal();
+    });
+
     /**
      * Reset the game, starting a new one
      */
@@ -299,7 +305,8 @@ $(function(){
 
         // Reset funds and start a new game
         $("#new-game").click(function(){
-            resetGame();
+            $("#money").html(500);
+            deal();
         });
 
     }
