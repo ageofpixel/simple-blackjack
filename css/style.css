@@ -1,22 +1,6 @@
-html, div{
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-}
-
 a{
     text-decoration: none;
     color: #06C;
-}
-
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    color: #333;
-    font-size: 15px;
-    line-height: 20px;
-    background-color: #909090;
 }
 
 .clear{
@@ -24,7 +8,6 @@ body{
 }
 
 .page{
-    width: 960px;
     margin: 0 auto;
     background-color: #fff;
     min-height: 500px;
@@ -54,56 +37,11 @@ body{
 }
 
 .buttons{
-    width: 210px;
     margin: 20px auto 0 auto;
 }
 
 .flipped{
     background-position: -158px -492px !important;
-}
-
-
-.btn {
-    font: bold 13px "Helvetica Neue", Helvetica, Arial, clean, sans-serif !important;
-    text-shadow: 0 -1px 1px rgba(0,0,0,0.25), -2px 0 1px rgba(0,0,0,0.25);
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
-    display: inline-block;
-    color: white;
-    white-space: nowrap;
-    text-decoration: none;
-    cursor: pointer;
-    background-color: #0071f2;
-    border-style: none;
-    text-align: center;
-    overflow: visible;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    padding-top: 10px;
-    height: 40px;
-    width: 100px;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
-}
-
-.btn:hover,
-.btn:focus {
-    background-position: 0 -50px;
-    color: white;
-    background-color: #f28100;
-}
-
-.btn:active {
-    background-color: #f0970a;
-    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.7);
-    -webkit-box-shadow: none;
 }
 
 .card {
@@ -343,13 +281,11 @@ body{
 }
 
 .bet{
-    width: 50px;
     margin: 0 auto;
     height: 40px;
 }
 
 .betting-area{
-    width: 70px;
     margin: 30px auto 30px auto;
 }
 

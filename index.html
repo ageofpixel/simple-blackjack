@@ -4,52 +4,71 @@
     <meta charset="UTF-8">
     <title>Simple Blackjack</title>
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <script src="js/jquery.min.js"></script>
     <script src="js/simple-blackjack.js"></script>
 </head>
 <body>
 
-<div class="page">
-    <div class="dealer-cards">
-        <div class="card card1"></div>
-        <div class="card flipped card2"></div>
-        <div class="new-cards"></div>
-        <div class="clear"></div>
-        <div id="dealerTotal" class="dealer-total"></div>
-    </div>
+<div class="container-fluid">
+    <div class="col-md-6">
+        <div class="page">
+            <h3>Dealer's hand</h3>
+            <div class="dealer-cards">
+                <div class="card card1"></div>
+                <div class="card flipped card2"></div>
+                <div class="new-cards"></div>
+                <div class="clear"></div>
+                <div id="dealerTotal" class="dealer-total"></div>
+            </div>
 
-    <div class="player-cards">
-        <div class="card card1"></div>
-        <div class="card card2"></div>
-        <div class="new-cards"></div>
-        <div class="clear"></div>
-        <div id="playerTotal" class="player-total"></div>
-    </div>
-
-    <div class="buttons">
-        <div class="btn" id="hit">Hit</div>
-        <div class="btn" id="stand">Stand</div>
-    </div>
-
-    <div class="betting-area">
-        <b>Your Bet</b><br />
-        <div id="bet" class="bet money">0</div>
-
-        <div>
-            <div class="btn" id="more">+</div>
-            <div class="btn" id="less">-</div>
+            <br /><h3>Player's hand</h3>
+            <div class="player-cards">
+                <div class="card card1"></div>
+                <div class="card card2"></div>
+                <div class="new-cards"></div>
+                <div class="clear"></div>
+                <div id="playerTotal" class="player-total"></div>
+            </div>
         </div>
-        <div class="clear"></div>
     </div>
+    <div class="col-md-6">
+        <div>
+            <h3>How to play</h3>
+            <p>
+                <ul>
+                    <li>Press the Hit button to add a card to your hand</li>
+                    <li>Press the Stand button to stick with your current hand and start the dealer's turn</li>
+                    <li>Press the + or - buttons to increase/decrease your bet</li>
+                    <li>Press the New Game button to reset available funds back to 500 and start a new game</li>
+                    <li>Winning the hand doubles your bet</li>
+                    <li>Press the Deal button to deal out new hands</li>
+                </ul>
+            </p>
+        </div>
+        <div class="buttons">
+            <button type="button" class="btn btn-primary" id="hit">Hit</button>
+            <button type="button" class="btn btn-primary" id="stand">Stand</button>
+            <button type="button" class="btn btn-primary" id="new-game">New Game</button>
+        </div>
 
-    <div>
-        <b>Available Funds</b><br />
-        <span id="money" class="money">500</span>
+        <div class="betting-area">
+            <b>Your Bet</b><br />
+            <div id="bet" class="bet money">0</div>
+
+            <div>
+                <button type="button" class="btn btn-primary" id="more">+</button>
+                <button type="button" class="btn btn-primary" id="less">-</button>
+            </div>
+            <div class="clear"></div><br />
+            <b>Available Funds</b><br />
+            <span id="money" class="money">500</span>
+            <div class="clear"></div>
+        </div>
+
         <div class="clear"></div>
+        <div id="message" class="message"></div>
     </div>
-
-    <div class="clear"></div>
-    <div id="message" class="message"></div>
 </div>
 
 </body>

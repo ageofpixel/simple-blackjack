@@ -3,11 +3,6 @@
  *
  * Basic blackjack game
  * Available money starts at 500
- *
- * @Todo Reset available money balance if the player's balance reaches zero
- * @Todo Set different amounts for increasing/decreasing the bet
- * @Todo Add a better messaging system to let the player know if they win or lose
- * @Todo Better use of available screen space
  */
 $(function(){
     deal();
@@ -20,7 +15,7 @@ $(function(){
         $(".dealer-cards").html("<div class='card card1'></div><div class='card card2 flipped'></div><div class='new-cards'></div><div class='clear'></div><div id='dealerTotal' class='dealer-total'></div>");
         $(".player-cards").html("<div class='card card1'></div><div class='card card2'></div><div class='new-cards'></div><div class='clear'></div><div id='playerTotal' class='player-total'></div>");
 
-        var reloadGame = "<div class='btn' id='hit'>Hit</div><div class='btn' id='stand'>Stand</div>";
+        var reloadGame = "<button type='button' class='btn btn-primary' id='hit'>Hit</button><button type='button' class='btn btn-primary' id='stand'>Stand</button><button type='button' class='btn btn-primary' id='new-game'>New Game</button>";
         $(".buttons").html(reloadGame);
 
         $(".dealer-cards").css("width","");
@@ -191,7 +186,7 @@ $(function(){
             // New game if the player goes over 21
             if(playerTotal > 21){
                 $("#message").html('Bust!');
-                var reloadGame = "<div class='btn' id='deal'>Deal</div>";
+                var reloadGame = "<button type='button' class='btn btn-primary' id='deal'>Deal</button>";
                 $(".buttons").html(reloadGame);
                 /// Pay up
                 $("#bet").html('0');
@@ -223,8 +218,8 @@ $(function(){
 
                 // Player wins if the dealer goes over 21
                 if (dealerTotal > 21) {
-                    $("#message").html('Dealer Bust!');
-                    var reloadGame = "<div class='btn' id='deal'>Deal</div>";
+                    $("#message").html('Dealer Bust! Play again?');
+                    var reloadGame = "<button type='button' class='btn btn-primary' id='deal'>Deal</button>";
                     $(".buttons").html(reloadGame);
                     // Stop dealing out cards to the dealer
                     clearInterval(continueDealing);
@@ -242,7 +237,7 @@ $(function(){
                 if (dealerTotal >= 17 && dealerTotal <= 21) {
                     // Player wins if their score is higher than the dealer and is not higher than 21
                     if (playerTotal > dealerTotal && playerTotal <= 21) {
-                        $("#message").html('You Win!');
+                        $("#message").html('You Win! Play again?');
 
                         // Pay up
                         var bet = $("#bet").html();
@@ -254,13 +249,17 @@ $(function(){
 
                     // Dealer wins if their score is higher than the player and is not higher than 21
                     if (playerTotal < dealerTotal && dealerTotal <= 21) {
-                        $("#message").html('You Lose!');
+                        $("#message").html('You Lose! Play again?');
 
                         // Pay up
                         var bet = $("#bet").html();
                         var money = $("#money").html();
                         $("#bet").html('0');
                         $("#money").html(parseInt(money) - parseInt(bet));
+
+                        if (money === 0) {
+                            $("#message").html('You have run out of funds! Play again?');
+                        }
                     }
 
                     // If the score is even
@@ -272,7 +271,7 @@ $(function(){
                         $("#bet").html('0');
                     }
 
-                    var reloadGame = "<div class='btn' id='deal'>Deal</div>";
+                    var reloadGame = "<button type='button' class='btn btn-primary' id='deal'>Deal</button>";
                     $(".buttons").html(reloadGame);
                     clearInterval(continueDealing);
                     return false;
@@ -298,6 +297,11 @@ $(function(){
             }, 500);
         });
 
+        // Reset funds and start a new game
+        $("#new-game").click(function(){
+            resetGame();
+        });
+
     }
 
     /**
@@ -309,6 +313,7 @@ $(function(){
         var money = $("#money").html();
 
         if (money === 0) {
+            $("#message").html('You have no available funds.');
             return false;
         }
 
